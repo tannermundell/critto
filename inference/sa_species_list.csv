@@ -1,0 +1,151 @@
+class,common_name,scientific_name,iucn_status,inat_taxon_id,sa_observations,photo_url
+Aves,Egyptian Goose,Alopochen aegyptiaca,Least Concern,72486,12768,https://inaturalist-open-data.s3.amazonaws.com/photos/130517490/medium.jpeg
+Aves,Hadada Ibis,Bostrychia hagedash,Least Concern,3743,10288,https://static.inaturalist.org/photos/73848759/medium.jpg
+Aves,Helmeted Guineafowl,Numida meleagris,Least Concern,1428,8537,https://inaturalist-open-data.s3.amazonaws.com/photos/199644869/medium.jpg
+Aves,Southern Fiscal,Lanius collaris,Least Concern,204531,8197,https://inaturalist-open-data.s3.amazonaws.com/photos/284099565/medium.jpeg
+Aves,Blacksmith Lapwing,Vanellus armatus,Least Concern,4870,7988,https://inaturalist-open-data.s3.amazonaws.com/photos/259641949/medium.jpg
+Aves,Cape Wagtail,Motacilla capensis,Least Concern,13699,7082,https://inaturalist-open-data.s3.amazonaws.com/photos/54496010/medium.jpg
+Aves,Southern Masked Weaver,Ploceus velatus,Least Concern,13804,6950,https://inaturalist-open-data.s3.amazonaws.com/photos/333356/medium.JPG
+Aves,Red-eyed Dove,Streptopelia semitorquata,Least Concern,2988,6874,https://inaturalist-open-data.s3.amazonaws.com/photos/1954844/medium.jpg
+Aves,Cape Sparrow,Passer melanurus,Least Concern,13853,6789,https://inaturalist-open-data.s3.amazonaws.com/photos/5856531/medium.jpg
+Aves,Cape Weaver,Ploceus capensis,Least Concern,13801,6713,https://inaturalist-open-data.s3.amazonaws.com/photos/22757/medium.jpg
+Aves,Laughing Dove,Spilopelia senegalensis,Least Concern,1455922,6671,https://inaturalist-open-data.s3.amazonaws.com/photos/2951884/medium.jpg
+Aves,Kelp Gull,Larus dominicanus,Least Concern,4388,6488,https://inaturalist-open-data.s3.amazonaws.com/photos/131558116/medium.jpg
+Aves,Red-winged Starling,Onychognathus morio,Least Concern,204554,6327,https://inaturalist-open-data.s3.amazonaws.com/photos/355116921/medium.jpeg
+Aves,Grey Heron,Ardea cinerea,Least Concern,4954,6102,https://inaturalist-open-data.s3.amazonaws.com/photos/73516715/medium.jpg
+Aves,Southern Double-collared Sunbird,Cinnyris chalybeus,Least Concern,145157,6079,https://inaturalist-open-data.s3.amazonaws.com/photos/424155892/medium.jpg
+Aves,Fork-tailed Drongo,Dicrurus adsimilis,Least Concern,8268,6067,https://inaturalist-open-data.s3.amazonaws.com/photos/57910675/medium.jpg
+Aves,African Sacred Ibis,Threskiornis aethiopicus,Least Concern,3739,6019,https://static.inaturalist.org/photos/626831344/medium.jpg
+Aves,Cape Robin-Chat,Dessonornis caffer,Least Concern,1585912,5971,https://static.inaturalist.org/photos/257266823/medium.jpg
+Aves,Reed Cormorant,Microcarbo africanus,Least Concern,508246,5916,https://inaturalist-open-data.s3.amazonaws.com/photos/515362443/medium.jpg
+Aves,Fiscal Flycatcher,Sigelus silens,Least Concern,13251,5527,https://static.inaturalist.org/photos/59900970/medium.jpg
+Aves,Southern Red Bishop,Euplectes orix,Least Concern,13962,5522,https://static.inaturalist.org/photos/264253885/medium.jpg
+Aves,Cape White-eye,Zosterops virens,Least Concern,472770,5492,https://inaturalist-open-data.s3.amazonaws.com/photos/545801809/medium.jpg
+Aves,Red-knobbed Coot,Fulica cristata,Least Concern,487,5487,https://static.inaturalist.org/photos/197884779/medium.jpg
+Aves,Yellow-billed Duck,Anas undulata,Least Concern,6965,5464,https://inaturalist-open-data.s3.amazonaws.com/photos/252208841/medium.jpeg
+Aves,Black-headed Heron,Ardea melanocephala,Least Concern,4972,5334,https://inaturalist-open-data.s3.amazonaws.com/photos/194664553/medium.jpg
+Aves,Cape Bulbul,Pycnonotus capensis,Least Concern,14594,5301,https://inaturalist-open-data.s3.amazonaws.com/photos/1366561/medium.jpg
+Aves,Common Bulbul,Pycnonotus barbatus,Least Concern,14588,5291,https://inaturalist-open-data.s3.amazonaws.com/photos/1447665/medium.jpg
+Aves,Speckled Pigeon,Columba guinea,Least Concern,3036,5184,https://inaturalist-open-data.s3.amazonaws.com/photos/1954837/medium.jpg
+Aves,Common Ostrich,Struthio camelus,Least Concern,20526,5056,https://static.inaturalist.org/photos/2568822/medium.jpg
+Aves,Jackal Buzzard,Buteo rufofuscus,Least Concern,5198,4991,https://inaturalist-open-data.s3.amazonaws.com/photos/6330504/medium.jpeg
+Aves,Brown-hooded Kingfisher,Halcyon albiventris,Least Concern,2346,4984,https://inaturalist-open-data.s3.amazonaws.com/photos/740247/medium.jpg
+Aves,Great Cormorant,Phalacrocorax carbo,Least Concern,4270,4915,https://inaturalist-open-data.s3.amazonaws.com/photos/141367445/medium.jpg
+Aves,Cape Spurfowl,Pternistis capensis,Least Concern,343746,4667,https://inaturalist-open-data.s3.amazonaws.com/photos/2018016/medium.jpg
+Aves,Cape Sugarbird,Promerops cafer,Least Concern,13442,4647,https://inaturalist-open-data.s3.amazonaws.com/photos/159555798/medium.jpeg
+Aves,African Penguin,Spheniscus demersus,Critically Endangered,3813,4479,https://static.inaturalist.org/photos/79056615/medium.jpg
+Aves,Speckled Mousebird,Colius striatus,Least Concern,3704,4457,https://inaturalist-open-data.s3.amazonaws.com/photos/245848834/medium.jpg
+Aves,African Stonechat,Saxicola torquatus,Least Concern,55371,4403,https://inaturalist-open-data.s3.amazonaws.com/photos/2644120/medium.jpg
+Aves,African Fish-Eagle,Icthyophaga vocifer,Least Concern,1505670,4379,https://static.inaturalist.org/photos/339871833/medium.jpg
+Aves,Hartlaub's Gull,Chroicocephalus hartlaubii,Least Concern,144509,4336,https://inaturalist-open-data.s3.amazonaws.com/photos/552100936/medium.jpg
+Aves,Malachite Sunbird,Nectarinia famosa,Least Concern,13300,4326,https://inaturalist-open-data.s3.amazonaws.com/photos/25812/medium.jpg
+Aves,Familiar Chat,Oenanthe familiaris,Least Concern,980204,4289,https://inaturalist-open-data.s3.amazonaws.com/photos/773836/medium.jpg
+Aves,African Oystercatcher,Haematopus moquini,Least Concern,4839,4263,https://inaturalist-open-data.s3.amazonaws.com/photos/13539497/medium.jpg
+Aves,Pied Crow,Corvus albus,Least Concern,8038,4197,https://inaturalist-open-data.s3.amazonaws.com/photos/177161231/medium.jpg
+Aves,Common Moorhen,Gallinula chloropus,Least Concern,201282,4115,https://inaturalist-open-data.s3.amazonaws.com/photos/171773229/medium.jpg
+Aves,Cape Starling,Lamprotornis nitens,Least Concern,14930,4100,https://inaturalist-open-data.s3.amazonaws.com/photos/169122406/medium.jpg
+Aves,Karoo Prinia,Prinia maculosa,Least Concern,7730,4045,https://inaturalist-open-data.s3.amazonaws.com/photos/64726020/medium.jpg
+Aves,Western Cattle-Egret,Ardea ibis,Least Concern,411086,3838,https://inaturalist-open-data.s3.amazonaws.com/photos/278764160/medium.jpg
+Aves,Spotted Eagle-Owl,Bubo africanus,Least Concern,204470,3834,https://inaturalist-open-data.s3.amazonaws.com/photos/252378479/medium.jpg
+Aves,House Sparrow,Passer domesticus,Least Concern,13858,3706,https://inaturalist-open-data.s3.amazonaws.com/photos/4608133/medium.jpg
+Aves,African Darter,Anhinga rufa,Least Concern,5066,3697,https://inaturalist-open-data.s3.amazonaws.com/photos/107850993/medium.jpg
+Mammalia,African Savanna Elephant,Loxodonta africana,Endangered,43694,10815,https://inaturalist-open-data.s3.amazonaws.com/photos/93674728/medium.jpg
+Mammalia,Plains Zebra,Equus quagga,Near Threatened,43335,8899,https://inaturalist-open-data.s3.amazonaws.com/photos/335469754/medium.jpg
+Mammalia,Southern Giraffe,Giraffa giraffa,Not Evaluated,1510571,8489,https://inaturalist-open-data.s3.amazonaws.com/photos/399596604/medium.jpg
+Mammalia,Chacma Baboon,Papio ursinus,Least Concern,57556,7536,https://inaturalist-open-data.s3.amazonaws.com/photos/16253144/medium.jpg
+Mammalia,Impala,Aepyceros melampus,Least Concern,42278,7265,https://inaturalist-open-data.s3.amazonaws.com/photos/64268875/medium.jpg
+Mammalia,Greater Kudu,Tragelaphus strepsiceros,Least Concern,42339,6851,https://inaturalist-open-data.s3.amazonaws.com/photos/22442121/medium.jpeg
+Mammalia,Vervet Monkey,Chlorocebus pygerythrus,Least Concern,68137,6700,https://inaturalist-open-data.s3.amazonaws.com/photos/47225717/medium.jpeg
+Mammalia,Lion,Panthera leo,Vulnerable,41964,5736,https://inaturalist-open-data.s3.amazonaws.com/photos/9225318/medium.jpg
+Mammalia,Rock Hyrax,Procavia capensis,Least Concern,43086,5702,https://static.inaturalist.org/photos/131657139/medium.jpeg
+Mammalia,Common Warthog,Phacochoerus africanus,Least Concern,42122,5648,https://static.inaturalist.org/photos/264074428/medium.jpg
+Mammalia,African Buffalo,Syncerus caffer,Near Threatened,42405,5306,https://inaturalist-open-data.s3.amazonaws.com/photos/97834194/medium.jpg
+Mammalia,Common Hippopotamus,Hippopotamus amphibius,Vulnerable,42149,5091,https://inaturalist-open-data.s3.amazonaws.com/photos/13896177/medium.jpg
+Mammalia,Common Wildebeest,Connochaetes taurinus,Least Concern,42280,4952,https://static.inaturalist.org/photos/248838951/medium.jpg
+Mammalia,Brown Fur Seal,Arctocephalus pusillus,Least Concern,41742,4907,https://inaturalist-open-data.s3.amazonaws.com/photos/347732091/medium.jpg
+Mammalia,Southern Bushbuck,Tragelaphus sylvaticus,Least Concern,1431867,4606,https://inaturalist-open-data.s3.amazonaws.com/photos/59899521/medium.jpeg
+Mammalia,Nyala,Tragelaphus angasii,Least Concern,42342,4092,https://inaturalist-open-data.s3.amazonaws.com/photos/1413848/medium.jpg
+Mammalia,White Rhinoceros,Ceratotherium simum,Near Threatened,43348,4082,https://inaturalist-open-data.s3.amazonaws.com/photos/57287523/medium.jpg
+Mammalia,Cape Porcupine,Hystrix africaeaustralis,Least Concern,44173,4075,https://inaturalist-open-data.s3.amazonaws.com/photos/9104192/medium.jpg
+Mammalia,Waterbuck,Kobus ellipsiprymnus,Least Concern,42328,4024,https://inaturalist-open-data.s3.amazonaws.com/photos/72428489/medium.jpg
+Mammalia,Bontebok/Blesbok,Damaliscus pygargus,Least Concern,42275,3921,https://inaturalist-open-data.s3.amazonaws.com/photos/28592089/medium.jpg
+Mammalia,Leopard,Panthera pardus,Vulnerable,41963,3416,https://inaturalist-open-data.s3.amazonaws.com/photos/8666580/medium.jpeg
+Mammalia,Common Eland,Tragelaphus oryx,Least Concern,75192,3337,https://inaturalist-open-data.s3.amazonaws.com/photos/311295610/medium.jpg
+Mammalia,Spotted Hyena,Crocuta crocuta,Least Concern,41886,3336,https://static.inaturalist.org/photos/15526597/medium.jpg
+Mammalia,Steenbok,Raphicerus campestris,Least Concern,42375,3320,https://inaturalist-open-data.s3.amazonaws.com/photos/12602689/medium.jpeg
+Mammalia,Black-backed Jackal,Lupulella mesomelas,Least Concern,1210966,2799,https://inaturalist-open-data.s3.amazonaws.com/photos/477185480/medium.jpg
+Mammalia,Klipspringer,Oreotragus oreotragus,Least Concern,42384,2667,https://inaturalist-open-data.s3.amazonaws.com/photos/15561156/medium.jpg
+Mammalia,Bush Duiker,Sylvicapra grimmia,Least Concern,42424,2648,https://inaturalist-open-data.s3.amazonaws.com/photos/5488379/medium.jpg
+Mammalia,Springbok,Antidorcas marsupialis,Least Concern,42283,2519,https://static.inaturalist.org/photos/4475239/medium.jpg
+Mammalia,Hartebeest,Alcelaphus buselaphus,Least Concern,42418,2513,https://inaturalist-open-data.s3.amazonaws.com/photos/102232223/medium.jpg
+Mammalia,Yellow Mongoose,Cynictis penicillata,Least Concern,41911,1757,https://inaturalist-open-data.s3.amazonaws.com/photos/67439114/medium.jpeg
+Mammalia,Cheetah,Acinonyx jubatus,Vulnerable,41955,1683,https://inaturalist-open-data.s3.amazonaws.com/photos/57582224/medium.jpg
+Mammalia,Smith's Bush Squirrel,Paraxerus cepapi,Least Concern,46110,1677,https://inaturalist-open-data.s3.amazonaws.com/photos/70345553/medium.jpeg
+Mammalia,Eastern Gray Squirrel,Sciurus carolinensis,Least Concern,46017,1643,https://inaturalist-open-data.s3.amazonaws.com/photos/22144449/medium.jpg
+Mammalia,Cape Four-striped Grass Mouse,Rhabdomys pumilio,Least Concern,45723,1594,https://inaturalist-open-data.s3.amazonaws.com/photos/15873599/medium.jpg
+Mammalia,Gemsbok,Oryx gazella,Least Concern,42308,1576,https://static.inaturalist.org/photos/221946717/medium.jpg
+Mammalia,Mountain Zebra,Equus zebra,Vulnerable,43330,1445,https://inaturalist-open-data.s3.amazonaws.com/photos/265694761/medium.jpg
+Mammalia,African Wild Dog,Lycaon pictus,Endangered,42093,1426,https://inaturalist-open-data.s3.amazonaws.com/photos/50305267/medium.jpg
+Mammalia,Cape Grey Mongoose,Herpestes pulverulentus,Least Concern,74413,1242,https://inaturalist-open-data.s3.amazonaws.com/photos/14613537/medium.jpg
+Mammalia,Common Dwarf Mongoose,Helogale parvula,Least Concern,41906,1133,https://inaturalist-open-data.s3.amazonaws.com/photos/12783640/medium.jpg
+Mammalia,Banded Mongoose,Mungos mungo,Least Concern,41921,1129,https://inaturalist-open-data.s3.amazonaws.com/photos/42664377/medium.jpg
+Mammalia,Caracal,Caracal caracal,Least Concern,42042,1128,https://inaturalist-open-data.s3.amazonaws.com/photos/29894444/medium.jpg
+Mammalia,Grey Rhebok,Pelea capreolus,Near Threatened,42336,1096,https://static.inaturalist.org/photos/15174209/medium.jpg
+Mammalia,Black Wildebeest,Connochaetes gnou,Least Concern,42281,1083,https://inaturalist-open-data.s3.amazonaws.com/photos/456802247/medium.jpg
+Mammalia,South African Ground Squirrel,Geosciurus inauris,Least Concern,871614,1075,https://inaturalist-open-data.s3.amazonaws.com/photos/412153385/medium.jpeg
+Mammalia,Marsh Mongoose,Atilax paludinosus,Least Concern,41919,1019,https://inaturalist-open-data.s3.amazonaws.com/photos/59604524/medium.jpg
+Mammalia,African Clawless Otter,Lutra capensis,Near Threatened,1638841,1006,https://inaturalist-open-data.s3.amazonaws.com/photos/5498717/medium.jpg
+Mammalia,Common Slender Mongoose,Herpestes sanguineus,Least Concern,74414,939,https://inaturalist-open-data.s3.amazonaws.com/photos/14113969/medium.jpeg
+Mammalia,Meerkat,Suricata suricatta,Least Concern,41943,905,https://static.inaturalist.org/photos/288911228/medium.jpg
+Mammalia,Cape Grysbok,Raphicerus melanotis,Least Concern,42376,848,https://static.inaturalist.org/photos/29316021/medium.jpg
+Mammalia,Sable Antelope,Hippotragus niger,Least Concern,42334,787,https://inaturalist-open-data.s3.amazonaws.com/photos/92248778/medium.jpg
+Reptilia,Southern Rock Agama,Agama atra,Least Concern,31150,10289,https://inaturalist-open-data.s3.amazonaws.com/photos/15571838/medium.jpg
+Reptilia,Angulate Tortoise,Chersina angulata,Least Concern,40021,9034,https://inaturalist-open-data.s3.amazonaws.com/photos/29150263/medium.jpg
+Reptilia,Cape Dwarf Chameleon,Bradypodion pumilum,Near Threatened,32954,7282,https://static.inaturalist.org/photos/1568996/medium.jpg
+Reptilia,Common Dwarf Gecko,Lygodactylus capensis,Least Concern,34303,7003,https://inaturalist-open-data.s3.amazonaws.com/photos/236812866/medium.jpg
+Reptilia,Leopard Tortoise,Stigmochelys pardalis,Least Concern,40092,6774,https://inaturalist-open-data.s3.amazonaws.com/photos/12902301/medium.jpg
+Reptilia,Tropical House Gecko,Hemidactylus mabouia,Least Concern,68492,3846,https://inaturalist-open-data.s3.amazonaws.com/photos/148226455/medium.jpg
+Reptilia,Puff Adder,Bitis arietans,Least Concern,30851,3606,https://inaturalist-open-data.s3.amazonaws.com/photos/111121355/medium.jpeg
+Reptilia,Marbled Leaf-toed Gecko,Afrogecko porphyreus,Least Concern,93486,3529,https://inaturalist-open-data.s3.amazonaws.com/photos/109740679/medium.jpg
+Reptilia,Nile Crocodile,Crocodylus niloticus,Least Concern,341972,3515,https://static.inaturalist.org/photos/545741360/medium.jpg
+Reptilia,Southern Tree Agama,Acanthocercus atricollis,Least Concern,872122,3281,https://inaturalist-open-data.s3.amazonaws.com/photos/58597635/medium.jpg
+Reptilia,Black Girdled Lizard,Cordylus niger,Least Concern,33062,3140,https://inaturalist-open-data.s3.amazonaws.com/photos/134395528/medium.jpg
+Reptilia,African Striped Skink,Trachylepis striata,Least Concern,37418,2945,https://inaturalist-open-data.s3.amazonaws.com/photos/86654266/medium.jpeg
+Reptilia,Flap-necked Chameleon,Chamaeleo dilepis,Least Concern,32854,2941,https://static.inaturalist.org/photos/107063651/medium.jpg
+Reptilia,Cape Skink,Trachylepis capensis,Least Concern,37436,2459,https://inaturalist-open-data.s3.amazonaws.com/photos/26746658/medium.jpg
+Reptilia,Speckled Rock Skink,Trachylepis punctatissima,Least Concern,114294,2403,https://inaturalist-open-data.s3.amazonaws.com/photos/19920152/medium.jpeg
+Reptilia,Rainbow Skink,Trachylepis margaritifer,Least Concern,1630133,2343,https://inaturalist-open-data.s3.amazonaws.com/photos/492723440/medium.jpeg
+Reptilia,Common Slug-eater,Duberria lutrix,Least Concern,30326,2238,https://inaturalist-open-data.s3.amazonaws.com/photos/262187983/medium.jpg
+Reptilia,Mole Snake,Pseudaspis cana,Least Concern,28948,2216,https://inaturalist-open-data.s3.amazonaws.com/photos/28317649/medium.jpeg
+Reptilia,Nile Monitor,Varanus niloticus,Least Concern,71085,2196,https://inaturalist-open-data.s3.amazonaws.com/photos/144153390/medium.jpg
+Reptilia,Boomslang,Dispholidus typus,Least Concern,30358,1968,https://static.inaturalist.org/photos/207036790/medium.jpg
+Reptilia,Cape House Snake,Boaedon capensis,Least Concern,539396,1876,https://inaturalist-open-data.s3.amazonaws.com/photos/32982239/medium.jpeg
+Reptilia,Cape Terrapin,Pelomedusa galeata,Least Concern,560427,1625,https://inaturalist-open-data.s3.amazonaws.com/photos/21457131/medium.jpeg
+Reptilia,Red-lipped Snake,Crotaphopeltis hotamboeia,Least Concern,82808,1610,https://inaturalist-open-data.s3.amazonaws.com/photos/28996828/medium.jpeg
+Reptilia,Knysna Dwarf Chameleon,Bradypodion damaranum,Least Concern,32972,1583,https://inaturalist-open-data.s3.amazonaws.com/photos/1957488/medium.jpg
+Reptilia,Serrated Hinged Terrapin,Pelusios sinuatus,Least Concern,40126,1574,https://inaturalist-open-data.s3.amazonaws.com/photos/12902672/medium.jpg
+Reptilia,Parrot-beaked Tortoise,Homopus areolatus,Least Concern,102930,1572,https://inaturalist-open-data.s3.amazonaws.com/photos/6309489/medium.jpg
+Reptilia,Cape Girdled Lizard,Cordylus cordylus,Least Concern,33027,1543,https://inaturalist-open-data.s3.amazonaws.com/photos/110491390/medium.jpeg
+Reptilia,Rhombic Skaapsteker,Psammophylax rhombeatus,Least Concern,28954,1491,https://inaturalist-open-data.s3.amazonaws.com/photos/11192773/medium.jpeg
+Reptilia,Rock Monitor,Varanus albigularis,Least Concern,39420,1361,https://inaturalist-open-data.s3.amazonaws.com/photos/15787473/medium.jpg
+Reptilia,Red-sided Skink,Trachylepis homalocephala,Least Concern,37431,1358,https://inaturalist-open-data.s3.amazonaws.com/photos/11625812/medium.jpeg
+Reptilia,Cape Cobra,Naja nivea,Least Concern,30487,1355,https://inaturalist-open-data.s3.amazonaws.com/photos/196270053/medium.jpg
+Reptilia,Common Brown Water Snake,Lycodonomorphus rufulus,Least Concern,29536,1348,https://static.inaturalist.org/photos/52748143/medium.jpg
+Reptilia,Bibron's Thick-toed Gecko,Chondrodactylus bibronii,Least Concern,34156,1249,https://static.inaturalist.org/photos/466190738/medium.jpg
+Reptilia,Variable Skink,Trachylepis varia,Least Concern,37415,1142,https://inaturalist-open-data.s3.amazonaws.com/photos/11496079/medium.jpeg
+Reptilia,Egg-eating Snake,Dasypeltis scabra,Least Concern,26717,1139,https://static.inaturalist.org/photos/96741002/medium.jpg
+Reptilia,Spotted Bush Snake,Philothamnus semivariegatus,Least Concern,29073,1116,https://inaturalist-open-data.s3.amazonaws.com/photos/55873349/medium.jpg
+Reptilia,Western Rock Skink,Trachylepis sulcata,Least Concern,37416,1014,https://inaturalist-open-data.s3.amazonaws.com/photos/1345506/medium.jpg
+Reptilia,Rhombic Night Adder,Causus rhombeatus,Least Concern,30820,998,https://inaturalist-open-data.s3.amazonaws.com/photos/180223995/medium.jpg
+Reptilia,Cape Legless Skink,Acontias meleagris,Least Concern,37301,897,https://static.inaturalist.org/photos/96963997/medium.jpg
+Reptilia,Ground Agama,Agama aculeata,Least Concern,68556,881,https://inaturalist-open-data.s3.amazonaws.com/photos/29307611/medium.jpeg
+Reptilia,Karoo Girdled Lizard,Karusasaurus polyzonus,Least Concern,33061,853,https://inaturalist-open-data.s3.amazonaws.com/photos/214591252/medium.jpg
+Reptilia,Cradock Thick-toed Gecko,Pachydactylus geitje,Least Concern,34148,796,https://inaturalist-open-data.s3.amazonaws.com/photos/14146982/medium.jpg
+Reptilia,Cape Crag Lizard,Pseudocordylus microlepidotus,Least Concern,33038,784,https://inaturalist-open-data.s3.amazonaws.com/photos/116324341/medium.jpg
+Reptilia,Spotted Sand Lizard,Pedioplanis lineoocellata,Least Concern,35738,775,https://static.inaturalist.org/photos/97710192/medium.jpg
+Reptilia,Olive House Snake,Elaiophis inornatus,Least Concern,1649495,766,https://static.inaturalist.org/photos/96756353/medium.jpg
+Reptilia,Southern African Python,Python natalensis,Least Concern,111451,723,https://inaturalist-open-data.s3.amazonaws.com/photos/116077733/medium.jpeg
+Reptilia,Turner's Thick-toed Gecko,Chondrodactylus turneri,Least Concern,34161,694,https://inaturalist-open-data.s3.amazonaws.com/photos/12713803/medium.jpeg
+Reptilia,Common Giant Plated Lizard,Matobosaurus validus,Least Concern,539980,674,https://inaturalist-open-data.s3.amazonaws.com/photos/32907302/medium.jpeg
+Reptilia,Cross-marked Sand Snake,Psammophis crucifer,Least Concern,28985,653,https://inaturalist-open-data.s3.amazonaws.com/photos/11286094/medium.jpeg
+Reptilia,Variegated Skink,Trachylepis variegata,Least Concern,114297,627,https://inaturalist-open-data.s3.amazonaws.com/photos/119306945/medium.jpeg

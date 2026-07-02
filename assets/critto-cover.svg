@@ -1,0 +1,79 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b2e2b"/>
+      <stop offset="42%" stop-color="#175049"/>
+      <stop offset="72%" stop-color="#d9842c"/>
+      <stop offset="100%" stop-color="#f6c451"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe8a8"/>
+      <stop offset="60%" stop-color="#ffd06f"/>
+      <stop offset="100%" stop-color="#ffd06f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1200" height="630" fill="url(#sky)"/>
+
+  <!-- Sun glow + disc -->
+  <circle cx="930" cy="300" r="190" fill="url(#sun)"/>
+  <circle cx="930" cy="300" r="78" fill="#ffe7a0" opacity="0.95"/>
+
+  <!-- Birds in the sky -->
+  <g stroke="#fdf7ea" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.75">
+    <path d="M250 150 q 13 -11 26 0 q 13 -11 26 0"/>
+    <path d="M330 128 q 11 -9 22 0 q 11 -9 22 0"/>
+    <path d="M405 162 q 10 -8 20 0 q 10 -8 20 0"/>
+  </g>
+
+  <!-- Ground silhouette -->
+  <path d="M0 505 C200 486 420 502 650 489 C850 479 1050 495 1200 486 L1200 630 L0 630 Z" fill="#0c1c15"/>
+
+  <!-- Acacia trees -->
+  <g fill="#0c1c15" stroke="#0c1c15" stroke-linecap="round">
+    <!-- large -->
+    <path d="M948 492 C946 478 944 468 950 456" stroke-width="6" fill="none"/>
+    <path d="M950 461 L916 451 M950 461 L986 451 M951 465 L935 457 M951 465 L969 457" stroke-width="4" fill="none"/>
+    <ellipse cx="950" cy="448" rx="80" ry="16"/>
+    <ellipse cx="916" cy="452" rx="34" ry="11"/>
+    <ellipse cx="986" cy="452" rx="33" ry="11"/>
+    <!-- small -->
+    <path d="M1095 496 C1094 487 1093 481 1097 473" stroke-width="4" fill="none"/>
+    <ellipse cx="1097" cy="469" rx="48" ry="10"/>
+  </g>
+
+  <!-- grass tufts -->
+  <g stroke="#0c1c15" stroke-width="3" stroke-linecap="round" opacity="0.85">
+    <path d="M120 512 l0 -16 M126 512 l4 -14 M114 512 l-4 -14"/>
+    <path d="M520 506 l0 -14 M526 506 l4 -12 M514 506 l-4 -12"/>
+    <path d="M770 500 l0 -14 M776 500 l4 -12 M764 500 l-4 -12"/>
+  </g>
+
+  <!-- Kicker -->
+  <text x="92" y="232" fill="#9fd6c6" font-size="24" font-weight="600" letter-spacing="6">SOUTH AFRICAN WILDLIFE ID</text>
+
+  <!-- Wordmark -->
+  <text x="88" y="350" fill="#fdf7ea" font-size="132" font-weight="800" letter-spacing="1">Critto</text>
+
+  <!-- Tagline -->
+  <text x="92" y="398" fill="#dcebe0" font-size="29" font-weight="400" opacity="0.95">Identify South Africa's wildlife from a photo.</text>
+
+  <!-- Class chips -->
+  <g font-size="22" font-weight="600" fill="#fdf7ea">
+    <rect x="92"  y="424" width="132" height="46" rx="23" fill="#ffffff" fill-opacity="0.12" stroke="#fdf7ea" stroke-opacity="0.45"/>
+    <text x="158" y="453" text-anchor="middle">Birds</text>
+    <rect x="240" y="424" width="168" height="46" rx="23" fill="#ffffff" fill-opacity="0.12" stroke="#fdf7ea" stroke-opacity="0.45"/>
+    <text x="324" y="453" text-anchor="middle">Mammals</text>
+    <rect x="424" y="424" width="160" height="46" rx="23" fill="#ffffff" fill-opacity="0.12" stroke="#fdf7ea" stroke-opacity="0.45"/>
+    <text x="504" y="453" text-anchor="middle">Reptiles</text>
+  </g>
+
+  <!-- Camera focus corner brackets -->
+  <g stroke="#fdf7ea" stroke-width="3" fill="none" opacity="0.55" stroke-linecap="round">
+    <path d="M40 70 L40 40 L70 40"/>
+    <path d="M1160 70 L1160 40 L1130 40"/>
+    <path d="M40 560 L40 590 L70 590"/>
+    <path d="M1160 560 L1160 590 L1130 590"/>
+  </g>
+</svg>
