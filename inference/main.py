@@ -28,6 +28,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
+from agent import build_entry
+
 
 # --------------------------------------------------------------------------
 # Load the species list once at startup.
@@ -122,6 +124,7 @@ class EntryResponse(BaseModel):
     common_name: str
     scientific_name: str
     iucn_status: str
+    summary: str = ""
     habitat: str
     diet: str
     size: str
@@ -174,23 +177,27 @@ def identify(req: IdentifyRequest):
 
 @app.post("/entry", response_model=EntryResponse, response_model_by_alias=True)
 def entry(req: EntryRequest):
-    """Mock: return a structured, templated field-guide entry. The real server
-    will replace the placeholder text with a grounded, Fireworks-generated entry."""
+    """Real knowledge agent: retrieves Wikipedia + local IUCN status, and (if an
+    LLM is configured) synthesises grounded field-guide fields. Falls back to the
+    real Wikipedia summary with honest placeholders when no LLM key is set."""
     sci = req.species.scientific_name
     known = SPECIES_BY_NAME.get(sci, {})
     common = req.species.common_name or known.get("common_name", "This species")
     klass = req.species.class_ or known.get("class", "animal")
-    status = known.get("iucn_status", "Not Evaluated")
+    status = known.get("iucn_status") or "Not Evaluated"
 
+    data = build_entry(common, sci, klass)
     return EntryResponse(
         common_name=common,
         scientific_name=sci,
         iucn_status=status,
-        habitat=f"[mock] Typical habitats where the {common} is found across South Africa.",
-        diet=f"[mock] What the {common} ({klass}) usually eats.",
-        size=f"[mock] Typical size and weight range for the {common}.",
-        range=f"[mock] The {common}'s distribution within South Africa.",
-        where_to_spot=f"[mock] Regions and parks where you're most likely to see a {common}.",
-        fun_fact=f"[mock] A memorable fact about the {common}.",
-        sources=["mock://placeholder"],
+        summary=data["summary"],
+        habitat=data["habitat"],
+        diet=data["diet"],
+        size=data["size"],
+        range=data["range"],
+        where_to_spot=data["where_to_spot"],
+        fun_fact=data["fun_fact"],
+        sources=data["sources"],
+        model_version=data["model_version"],
     )

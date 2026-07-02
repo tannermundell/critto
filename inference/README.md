@@ -77,8 +77,32 @@ Store the base URL as one config value in Lovable (e.g. `API_BASE_URL`). All cal
 window, change that one `API_BASE_URL` to the AMD endpoint. The contract is identical, so the
 frontend doesn't change.
 
+## /entry knowledge agent
+
+`/entry` is a real agent (`agent.py`): it retrieves the Wikipedia article for the species and
+combines it with the stored IUCN status. If an LLM is configured it writes the structured fields
+(habitat, diet, size, range, where-to-spot, fun fact) grounded in that text; otherwise it returns
+the real Wikipedia `summary` with honest "Not documented" placeholders. Responses are cached
+in-memory per species. The response now includes a `summary` field (an "About" blurb).
+
+The LLM is OpenAI-compatible, so the same code works with OpenAI now and Fireworks at kickoff —
+set env vars (no code change):
+
+```
+# OpenAI (test now)
+LLM_API_KEY=sk-...
+# LLM_MODEL defaults to gpt-4o-mini, LLM_BASE_URL defaults to OpenAI
+
+# Fireworks (at kickoff)
+LLM_BASE_URL=https://api.fireworks.ai/inference/v1
+LLM_MODEL=accounts/fireworks/models/<model-revealed-on-launch>
+LLM_API_KEY=<fireworks key>
+```
+
+On Render, add these under the service's **Environment** tab; it redeploys automatically.
+
 ## What changes for the real server
 
-- `/identify` — replace the random picker with the actual vision model (BioCLIP on ROCm).
-- `/entry` — replace the templated text with the Fireworks-backed agent (retrieval + LLM).
+- `/identify` — replace the random picker with the actual vision model (BioCLIP on ROCm). Still to do.
+- `/entry` — done (retrieval + optional LLM). Add an LLM key to move from fallback to full write-ups.
 - Everything else (routes, schemas, CORS, container) stays the same.

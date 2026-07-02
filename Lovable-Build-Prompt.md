@@ -2,8 +2,8 @@
 
 Paste everything in the box below into Lovable as your initial build prompt. Before you do:
 
-1. Connect your Supabase project to Lovable (Lovable has a native Supabase integration).
-2. Have your deployed mock API URL ready — you'll paste it where the prompt says `<API_BASE_URL>`.
+1. Build first with the prompt below, THEN connect your own Supabase project (Lovable can't connect it until an app exists). The prompt tells Lovable not to use Lovable Cloud.
+2. The mock API URL is already wired into the prompt below (`https://critto-mock.onrender.com`).
 3. The Supabase tables (`species`, `sightings`) and the `sightings` storage bucket already exist
    from `db/schema.sql` — the prompt tells Lovable to use them, not recreate them.
 
@@ -17,11 +17,18 @@ Critto lets a user photograph a South African animal (bird, mammal, or reptile),
 species, and shows a rich field-guide entry. Users can save their identifications to a personal
 "life list."
 
+**IMPORTANT — backend:** Do NOT use or enable Lovable Cloud, and do NOT provision any built-in
+database or auth. I will connect my own existing **Supabase** project immediately after this first
+build. Build the UI now and wire all auth, database, and storage through Supabase (supabase-js); it
+will start working once I connect my project. Use environment variables/placeholders for the Supabase
+URL and anon key that get filled when I connect.
+
 ### Tech & integrations
-- Use the connected **Supabase** project for auth, database, and storage. Do NOT create new tables —
-  use the existing `species` and `sightings` tables and the existing private `sightings` storage bucket.
+- All auth, database, and storage go through **my Supabase** project (connected after this build) — not
+  Lovable Cloud. Do NOT create or migrate tables: my Supabase already has the `species` and `sightings`
+  tables and a private `sightings` storage bucket (described below). Use them as-is once connected.
 - Call an external **inference API** for identification and field-guide content. Store its base URL as a
-  single config constant: `API_BASE_URL = "<API_BASE_URL>"`. All calls go to `{API_BASE_URL}/identify`
+  single config constant: `API_BASE_URL = "https://critto-mock.onrender.com"`. All calls go to `{API_BASE_URL}/identify`
   and `{API_BASE_URL}/entry`.
 - Require login (Supabase email/password auth). Row Level Security already restricts each user to their
   own sightings.
