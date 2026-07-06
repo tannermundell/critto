@@ -1,52 +1,49 @@
 # Critto — Project Status
 
-_Snapshot at end of build session (early July 2026)._
+_Snapshot: early July 2026._
 
-## Live now
-- **Supabase** (your project): `species` (150, seeded) + `sightings`; RLS; private `sightings`
-  storage bucket. Gamification columns populated via `db/02_gamification.sql`:
-  - `rarity` — Common → Legendary, ranked **within class**.
-  - `introduced` — flagged for House Sparrow and Eastern Gray Squirrel.
-- **Inference API** on Render — `https://critto-mock.onrender.com`:
-  - `/identify` — **mock** (returns random species). Real BioCLIP vision model swaps in during the
-    GPU window using the same contract (one URL change).
-  - `/entry` — **real agent** (Wikipedia retrieval + IUCN status + citations). Currently
-    `agent-fallback`: the About `summary` is real; the split fields say "Not documented" until an
-    LLM key is set.
-  - `/health` — ok, `species_loaded: 150`.
-- **Frontend** (Lovable, connected to your own Supabase — not Lovable Cloud):
-  - Auth; Identify (upload → candidates → confirm); Result card (About, "Listen" read-aloud,
-    Introduced badge, hides "Not documented"); Collection (rarity cards, locked cards show name +
-    rarity); **Journal** (renamed from My List).
-- **GitHub** (public): `github.com/tannermundell/critto` — satisfies the submission repo requirement.
+## Live / done
+- **Supabase** (your project): `species` (150, seeded) + `sightings`; RLS; private storage bucket.
+  Gamification populated (`db/02_gamification.sql`): `rarity` (blended — observation frequency AND an
+  IUCN conservation floor, so threatened species can't read as Common), `introduced` (House Sparrow,
+  Eastern Gray Squirrel).
+- **Frontend** (Lovable, on your own Supabase): auth; Identify (upload → candidates → confirm); result
+  card (About summary, "Listen" read-aloud, Introduced badge, hides "Not documented"); Collection
+  (rarity cards, locked cards show name + rarity); **Journal**; Badges (Big Five, Endangered Guardian,
+  class masters); desktop-responsive.
+- **Mock API** on Render (`https://critto-mock.onrender.com`): `/identify` = mock; `/entry` = real agent
+  (Wikipedia + IUCN + citations), currently `agent-fallback` until an LLM key is set.
+- **Real GPU server** (`inference/gpu_server.py`): **validated on the AMD Instinct GPU** in the ROCm
+  notebook — BioCLIP `/identify` returns real IDs (Lion at **99.95%**), `device: cuda`, `hip: 7.2`.
+  Same contract as the mock. Not persistently hosted (the notebook is ephemeral + locked-down network).
+- **GitHub** (public): `github.com/tannermundell/critto`.
 
-## One toggle from a big upgrade
-Set `LLM_API_KEY` (+ optional `LLM_BASE_URL`, `LLM_MODEL`) in Render's Environment tab and `/entry`
-fills real habitat/diet/size/range/where-to-spot/fun-fact. Works with OpenAI now, or Fireworks at
-kickoff — no rebuild. See `inference/README.md` for the exact vars.
+## Key decision — no live hosting required
+AMD support confirmed: **the project does not need to be hosted live** — a recorded demo is fine (the
+guide lists a live URL as optional anyway). So the persistent Developer Cloud VM is **off the critical
+path**. AMD-compute usage is evidenced by (a) the model running on the AMD GPU in the notebook (shown in
+the video), and (b) Fireworks (AMD-hosted) for the LLM. Repo + slides document it for the auto pre-screen.
 
 ## Still to do
-- **GPU window (the only true GPU work):** get BioCLIP running on ROCm; measure top-3 accuracy;
-  swap the mock `/identify` for the real model. Fine-tune only if accuracy is weak.
-- **LLM:** connect Fireworks (or OpenAI) so entries are fully written.
-- **Assets:** fine-tune/eval images; demo photos; cover → PNG; video + slide deck for submission.
-- **Gamification next:** badge/coin sets (Big Five, Endangered Guardians, class masters); levels/points.
-- **UX:** ongoing polish from your brother's review.
+1. **Wire Fireworks** on Render (`LLM_*` env vars) → real `/entry` content + AMD compute in the live
+   pipeline. ($6 Fireworks trial is enough; $50 hackathon credits pending.)
+2. **Demo video** — show the Critto app end-to-end AND a few seconds of `gpu_server.py` running on the
+   AMD GPU (the `/health` + Lion 99.95%).
+3. **Slide deck (PDF)** — state AMD usage clearly (pre-screened).
+4. **README "AMD compute" section** (pre-screened).
+5. For real IDs in the video without a hosted URL: run `gpu_server.py` on your **laptop** + a tunnel
+   (ngrok/cloudflared work fine off your machine), point Lovable at it while recording.
 
-## Key dates / credits (verify on the live page)
-- Register by **2 July** for day-one hackathon credits ($50 Fireworks). Later sign-ups: from 7 July.
-- New AMD AI Developer Program sign-ups: **$100 Cloud + $50 Fireworks** via a separate 2–3 day
-  approval, **not** tied to the hackathon cutoff.
-- GPU instance access details come at event start; treat the GPU window as the only true GPU time.
+## Accounts / credits
+- Fireworks: account created (same email); **$6 trial** available; **$50 hackathon credits pending**
+  (allocated from July 7 for late sign-ups). Own Fireworks key works for Track 3.
+- AMD Developer Cloud VM: signed up, **no credits yet**; not needed per the decision above.
+- AMD ROCm notebooks: working (team-823), 4h/24h quota — use for validation, not hosting.
 
 ## Map of the project
-- `PROJECT-STATUS.md` — this file (current state).
-- `Animal-ID-Build-Scope.md` — product framing + phasing.
-- `Phase1-Architecture-Requirements.md` — architecture & requirements.
-- `GPU-Window-Plan.md` — what to build before vs during the GPU window.
-- `ROADMAP.md` — future features (cards/badges, alien flag, sound, social).
-- `db/` — `schema.sql`, `02_gamification.sql`, `README.md` (setup + seeding).
-- `inference/` — the API: `main.py`, `agent.py`, `Dockerfile`, `README.md`.
-- `scripts/` — `pull_sa_species.py`, `enrich_iucn.py`, `sa_species_list.csv`.
-- `Lovable-Build-Prompt.md` + `lovable-prompts.md` — frontend build + follow-up prompts.
-- `assets/critto-cover.svg` — cover image.
+- `PROJECT-STATUS.md` (this) · `NEXT-SESSION.md` · `Track3-Submission-Checklist.md`
+- `Animal-ID-Build-Scope.md` · `Phase1-Architecture-Requirements.md` · `GPU-Window-Plan.md` · `ROADMAP.md`
+- `Competitive-Analysis-Seek.md`
+- `db/` (schema, 02_gamification, README) · `inference/` (main.py mock, gpu_server.py, agent.py, Dockerfiles)
+- `scripts/` (species pull + enrich + CSV) · `gpu/vision_validate.py`
+- `Lovable-Build-Prompt.md` + `lovable-prompts.md` · `assets/critto-cover.svg`

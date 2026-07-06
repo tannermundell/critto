@@ -1,21 +1,22 @@
-# Critto — start-of-next-session TODO
+# Critto — next session
 
-Status: all four **prepared** — SQL revised and prompts drafted. Execution (run SQL / paste prompts) is on you.
+Big milestone hit: the real BioCLIP `/identify` runs on the AMD GPU (Lion 99.95%). Live hosting is
+NOT required (AMD support confirmed) — so the VM is off the critical path. Focus shifts to Fireworks
+and the submission assets.
 
-## 1. Desktop / PC responsiveness — prompt ready
-Prompt #9 in `lovable-prompts.md`. Paste into Lovable.
+## Tomorrow, in order
+1. **Wire Fireworks** → real `/entry`.
+   - Get your Fireworks API key (fw_...) + pick a model from their catalog.
+   - On Render → service → Environment, add:
+     `LLM_BASE_URL=https://api.fireworks.ai/inference/v1`
+     `LLM_MODEL=accounts/fireworks/models/<model>`
+     `LLM_API_KEY=<fireworks key>`
+   - Render redeploys; test `/entry` → should return `agent-llm` with real fields.
+2. **README: add an "AMD compute" section** (pre-screen reads the repo) — ROCm BioCLIP + Fireworks.
+3. **Demo recording setup** — run `gpu_server.py` on your laptop + ngrok/cloudflared tunnel, point
+   Lovable at it, so the app shows real IDs on camera. Also capture the notebook GPU run for the video.
+4. **Start the slide deck (PDF)** — state AMD usage (pre-screened).
 
-## 2. Rarity formula (rhino problem) — done in SQL
-`db/02_gamification.sql` now blends observation frequency with an IUCN conservation floor
-(threatened species get a minimum rarity). Re-run it in the Supabase SQL Editor, then verify
-White Rhino / Lion / Leopard / Cheetah / Wild Dog / Penguin are no longer "Common".
-
-## 3. Badges / coins view — prompt ready
-Prompt #10 in `lovable-prompts.md` (Big Five, Endangered Guardian, class masters; coin/medallion
-style, computed from sightings). Paste into Lovable.
-
-## 4. Home page copy — prompt ready
-Prompt #11 in `lovable-prompts.md`. Paste into Lovable.
-
----
-After these: connect **Fireworks** (or OpenAI) to fill the `/entry` fields — see `inference/README.md`.
+## Housekeeping
+- **Push tonight's/local changes**: `git add . && git commit -m "docs + status" && git push`.
+- Chase the $50 Fireworks hackathon credits in Discord if they haven't landed (works on the $6 trial meanwhile).
