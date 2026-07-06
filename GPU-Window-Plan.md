@@ -29,6 +29,9 @@ the mock for the real model server — same API contract — and integration is 
 
 ## Build BEFORE the window (no GPU needed)
 
+> **Status:** Species data, Supabase, mock API, Lovable frontend, and the `/entry` agent are **done**.
+> Remaining: vision inference code + container, LLM connection, fine-tune/eval + demo assets.
+
 - **Species data** — done (`sa_species_list.csv`, 150 species).
 - **Supabase** — run `schema.sql`, seed the species table, confirm auth + storage. (Schema is ready.)
 - **Mock inference API** — small FastAPI app exposing `/identify` and `/entry`:

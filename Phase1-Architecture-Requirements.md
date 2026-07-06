@@ -2,7 +2,7 @@
 
 **Project:** Critto
 **Scope:** Image recognition of South African birds, mammals, and reptiles, with a grounded AI field-guide agent. Built for the AMD Developer Hackathon: ACT II.
-**Status:** Draft v1 — for review and iteration.
+**Status:** In build — backend live (Supabase seeded + gamification), `/entry` agent live, frontend built (incl. Collection, Journal, rarity, read-aloud, introduced badge). Current state tracked in `PROJECT-STATUS.md`. Vision `/identify` still mock pending the GPU window.
 
 Related: see `Animal-ID-Build-Scope.md` for the product framing and phasing.
 

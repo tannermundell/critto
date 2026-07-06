@@ -31,6 +31,19 @@ select common_name, iucn_status from public.species
   where iucn_status not in ('Least Concern') order by iucn_status;   -- the threatened ones
 ```
 
+## 4. Gamification data (rarity + introduced)
+
+After seeding, run `02_gamification.sql` in the SQL Editor. It adds and populates:
+- `rarity` — Common → Legendary, ranked within class by observation count.
+- `introduced` — flags non-native species (House Sparrow, Eastern Gray Squirrel).
+
+Safe to re-run. Verify:
+
+```sql
+select class, rarity, count(*) from public.species group by class, rarity order by class, rarity;
+select common_name, class from public.species where introduced;
+```
+
 ## Notes
 
 - **Re-importing:** if you need to redo the import, clear the table first: `truncate public.species cascade;`

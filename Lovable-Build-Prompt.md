@@ -1,5 +1,9 @@
 # Lovable Build Prompt — Critto
 
+> This is the **initial** build prompt. Follow-up prompts (About section, Collection + rarity,
+> read-aloud, introduced badge, named locked cards, hide "Not documented", My List → **Journal**)
+> are logged in `lovable-prompts.md`. Note: the "My Sightings / My List" screen below is now called **Journal**.
+
 Paste everything in the box below into Lovable as your initial build prompt. Before you do:
 
 1. Build first with the prompt below, THEN connect your own Supabase project (Lovable can't connect it until an app exists). The prompt tells Lovable not to use Lovable Cloud.

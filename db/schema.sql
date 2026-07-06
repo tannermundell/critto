@@ -23,6 +23,9 @@ create table if not exists public.species (
     inat_taxon_id    bigint,
     sa_observations  integer,
     photo_url        text,
+    -- gamification (populated by db/02_gamification.sql):
+    rarity           text,
+    introduced       boolean not null default false,
     -- filled at runtime by the knowledge agent (grounded field-guide entry):
     cached_entry     jsonb,
     -- optional: label the vision model emits, if it differs from scientific_name:
