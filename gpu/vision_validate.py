@@ -26,12 +26,16 @@ import sys
 import urllib.request
 
 
-def _pip(*pkgs):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", *pkgs])
+def _pip(*args):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", *args])
 
 
-# open_clip may not be in the base image; pillow usually is.
-_pip("open_clip_torch", "pillow")
+# Install open_clip WITHOUT pulling a fresh torch/torchvision — a plain
+# `pip install open_clip_torch` drags in a default (CUDA/CPU) torch wheel that
+# clobbers the notebook's ROCm build. --no-deps keeps the ROCm torch intact.
+# Run this with the notebook's ROCm Python (kernel), not the bare system python.
+_pip("--no-deps", "open_clip_torch")
+_pip("ftfy", "regex", "huggingface_hub", "pillow")
 
 import torch                     # noqa: E402
 import open_clip                 # noqa: E402
@@ -66,11 +70,14 @@ def main():
 
     # 1) GPU check
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"PyTorch {torch.__version__} | device: {device}")
+    hip = getattr(torch.version, "hip", None)
+    print(f"python: {sys.executable}")
+    print(f"PyTorch {torch.__version__} | ROCm(hip): {hip} | device: {device}")
     if device == "cuda":
         print(f"GPU: {torch.cuda.get_device_name(0)}")
     else:
-        print("WARNING: no GPU visible — running on CPU (check the ROCm environment).")
+        print("WARNING: no GPU visible. If ROCm(hip) is None you're on the wrong "
+              "Python (a CUDA/CPU torch) — run this in the notebook's ROCm kernel.")
 
     # 2) Load BioCLIP
     print("Loading BioCLIP (first run downloads weights) ...")
@@ -97,7 +104,10 @@ def main():
     with torch.no_grad():
         ifeat = model.encode_image(img)
         ifeat = ifeat / ifeat.norm(dim=-1, keepdim=True)
-        probs = (ifeat @ tfeat.T).squeeze(0).softmax(dim=-1)
+        # Scale by CLIP's learned temperature (logit_scale) BEFORE softmax —
+        # without this the probabilities come out nearly uniform.
+        logits = (model.logit_scale.exp() * (ifeat @ tfeat.T)).squeeze(0)
+        probs = logits.softmax(dim=-1)
 
     topk = probs.topk(min(args.topk, len(species)))
     print("\nTop predictions:")

@@ -101,8 +101,48 @@ LLM_API_KEY=<fireworks key>
 
 On Render, add these under the service's **Environment** tab; it redeploys automatically.
 
-## What changes for the real server
+## Real GPU server (`gpu_server.py`)
 
-- `/identify` — replace the random picker with the actual vision model (BioCLIP on ROCm). Still to do.
-- `/entry` — done (retrieval + optional LLM). Add an LLM key to move from fallback to full write-ups.
-- Everything else (routes, schemas, CORS, container) stays the same.
+`gpu_server.py` is the real inference service — same contract as the mock, so the frontend swaps by
+changing one base URL. It serves both endpoints on an AMD GPU:
+- `/identify` — **BioCLIP zero-shot** over the 150 species, running on the AMD GPU (ROCm). Text
+  embeddings are precomputed once at startup; each request only encodes the image.
+- `/entry` — the same knowledge agent as the mock (Wikipedia + IUCN + Fireworks LLM).
+- `/health` — reports `device` and `hip` so you can confirm it's on the GPU.
+
+### Run it directly on the AMD Developer Cloud VM (recommended)
+The VM has ROCm + PyTorch preinstalled, so no Docker needed:
+```bash
+git clone https://github.com/tannermundell/critto && cd critto/inference
+pip install -r requirements-gpu.txt
+pip install --no-deps open_clip_torch          # keep the ROCm torch
+export SPECIES_CSV=./sa_species_list.csv
+export LLM_BASE_URL=https://api.fireworks.ai/inference/v1   # for /entry
+export LLM_MODEL=accounts/fireworks/models/<model>
+export LLM_API_KEY=<fireworks key>
+uvicorn gpu_server:app --host 0.0.0.0 --port 8000
+```
+
+### Give it a public HTTPS URL (required — the frontend is HTTPS)
+Browsers block an HTTPS page calling a plain-HTTP API. Easiest fix is a Cloudflare quick tunnel
+(no signup, gives an https URL):
+```bash
+# in a second shell on the VM / notebook
+cloudflared tunnel --url http://localhost:8000
+```
+Point Lovable's `API_BASE_URL` at the printed `https://...trycloudflare.com` URL. For a permanent
+domain, use a Caddy reverse proxy instead.
+
+### Testing from a notebook session first
+Same steps in the notebook's terminal (uvicorn in one terminal, cloudflared in another). Note the
+notebook is time-limited (4h/24h), so use it to validate; use the VM for the judging window.
+
+### Docker (optional)
+`Dockerfile.rocm` builds the same server on a ROCm base. Running directly on the VM is simpler and
+avoids the large base image; the container is here for reproducibility.
+
+### Cutover checklist
+1. Server healthy on the VM (`/health` shows `device: cuda`, `hip` set).
+2. Public HTTPS URL via cloudflared/Caddy.
+3. Change `API_BASE_URL` in Lovable to that URL.
+4. `/identify` now returns real BioCLIP predictions; `/entry` returns Fireworks-written entries.

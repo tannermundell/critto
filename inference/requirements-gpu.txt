@@ -1,0 +1,10 @@
+# torch / torchvision come from the ROCm base image (or the AMD VM) — do NOT list
+# them here, or pip will pull a non-ROCm build. Install open_clip_torch separately
+# with --no-deps so it doesn't drag torch in either.
+fastapi
+uvicorn[standard]
+requests
+pillow
+ftfy
+regex
+huggingface_hub

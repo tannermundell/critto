@@ -1,0 +1,19 @@
+# Real GPU inference server on AMD ROCm.
+# Optional: the AMD Developer Cloud VM usually has ROCm + PyTorch preinstalled, so
+# running directly (no Docker) is simpler — see README. Use this if you want a
+# reproducible container. (Track 3 has no image-size limit; this base is large.)
+FROM rocm/pytorch:latest
+
+WORKDIR /app
+
+COPY requirements-gpu.txt .
+# Install app deps, then open_clip WITHOUT deps so it keeps the base ROCm torch.
+RUN pip install --no-cache-dir -r requirements-gpu.txt \
+ && pip install --no-cache-dir --no-deps open_clip_torch
+
+COPY . .
+
+ENV SPECIES_CSV=/app/sa_species_list.csv
+EXPOSE 8000
+
+CMD ["sh", "-c", "uvicorn gpu_server:app --host 0.0.0.0 --port ${PORT:-8000}"]
