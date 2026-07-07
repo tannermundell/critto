@@ -1,49 +1,44 @@
 # Critto — Project Status
 
-_Snapshot: early July 2026._
+_Snapshot: 7 July 2026._
+
+## The whole live app now runs on AMD
+Both inference endpoints run on **AMD-hosted Fireworks** (model: Minimax M3), live on Render — no
+self-hosted GPU, no VM. The hosting question is fully resolved.
+
+- **`/identify`** — Fireworks **vision** model picks the top-3 from our 150 species (constrained to the
+  list). Verified: Lion 98%. Falls back to the random mock only if the key/image is missing.
+- **`/entry`** — Fireworks **LLM** writes grounded field-guide fields (Wikipedia + IUCN + citations).
+  Verified: real habitat/diet/range/etc., `model_version: agent-llm`.
+- **BioCLIP on the AMD Instinct GPU** (`inference/gpu_server.py`) — validated separately (Lion 99.95%,
+  `device: cuda`, `hip: 7.2`). This is the high-accuracy classifier and the GPU-compute evidence for the
+  demo video. AMD is demonstrated on two fronts: Instinct GPU (shown) + Fireworks (live).
 
 ## Live / done
-- **Supabase** (your project): `species` (150, seeded) + `sightings`; RLS; private storage bucket.
-  Gamification populated (`db/02_gamification.sql`): `rarity` (blended — observation frequency AND an
-  IUCN conservation floor, so threatened species can't read as Common), `introduced` (House Sparrow,
-  Eastern Gray Squirrel).
-- **Frontend** (Lovable, on your own Supabase): auth; Identify (upload → candidates → confirm); result
-  card (About summary, "Listen" read-aloud, Introduced badge, hides "Not documented"); Collection
-  (rarity cards, locked cards show name + rarity); **Journal**; Badges (Big Five, Endangered Guardian,
-  class masters); desktop-responsive.
-- **Mock API** on Render (`https://critto-mock.onrender.com`): `/identify` = mock; `/entry` = real agent
-  (Wikipedia + IUCN + citations), currently `agent-fallback` until an LLM key is set.
-- **Real GPU server** (`inference/gpu_server.py`): **validated on the AMD Instinct GPU** in the ROCm
-  notebook — BioCLIP `/identify` returns real IDs (Lion at **99.95%**), `device: cuda`, `hip: 7.2`.
-  Same contract as the mock. Not persistently hosted (the notebook is ephemeral + locked-down network).
+- **Supabase**: 150 species seeded + gamification (`rarity` blended with IUCN floor; `introduced`).
+- **Frontend** (Lovable, own Supabase): auth, Identify, result card (About, read-aloud, Introduced badge,
+  hides "Not documented"), Collection (rarity cards), Journal, Badges, desktop-responsive. **Already
+  pointed at the Render URL — so the live app now does real AI end to end.**
+- **Inference** on Render (`critto-mock.onrender.com`): real `/identify` + `/entry` on Fireworks (above).
 - **GitHub** (public): `github.com/tannermundell/critto`.
 
-## Key decision — no live hosting required
-AMD support confirmed: **the project does not need to be hosted live** — a recorded demo is fine (the
-guide lists a live URL as optional anyway). So the persistent Developer Cloud VM is **off the critical
-path**. AMD-compute usage is evidenced by (a) the model running on the AMD GPU in the notebook (shown in
-the video), and (b) Fireworks (AMD-hosted) for the LLM. Repo + slides document it for the auto pre-screen.
-
-## Still to do
-1. **Wire Fireworks** on Render (`LLM_*` env vars) → real `/entry` content + AMD compute in the live
-   pipeline. ($6 Fireworks trial is enough; $50 hackathon credits pending.)
-2. **Demo video** — show the Critto app end-to-end AND a few seconds of `gpu_server.py` running on the
-   AMD GPU (the `/health` + Lion 99.95%).
-3. **Slide deck (PDF)** — state AMD usage clearly (pre-screened).
-4. **README "AMD compute" section** (pre-screened).
-5. For real IDs in the video without a hosted URL: run `gpu_server.py` on your **laptop** + a tunnel
-   (ngrok/cloudflared work fine off your machine), point Lovable at it while recording.
+## Still to do (build is essentially done)
+1. **Demo video** — Critto app end-to-end + a few seconds of BioCLIP on the AMD Instinct GPU.
+2. **Slide deck (PDF)** — state AMD usage (pre-screened).
+3. **README "AMD compute" section** (pre-screened) — Fireworks (live, both endpoints) + ROCm BioCLIP.
+4. Optional polish: pre-generate + cache the 150 entries; reptile prompt tuning; more badge sets;
+   multilingual names; laptop-served BioCLIP for the video's live-ID shots.
 
 ## Accounts / credits
-- Fireworks: account created (same email); **$6 trial** available; **$50 hackathon credits pending**
-  (allocated from July 7 for late sign-ups). Own Fireworks key works for Track 3.
-- AMD Developer Cloud VM: signed up, **no credits yet**; not needed per the decision above.
-- AMD ROCm notebooks: working (team-823), 4h/24h quota — use for validation, not hosting.
+- **Fireworks: $50 credits live**, own key, Minimax M3 (serverless, vision + text). Powers the live app.
+  (The 5 Track-1 models are harness-only; Track 3 has no restriction.)
+- AMD ROCm notebooks: working (team-823, 4h/24h) — used for BioCLIP validation.
+- AMD Developer Cloud VM: not needed (no live GPU hosting required).
 
 ## Map of the project
 - `PROJECT-STATUS.md` (this) · `NEXT-SESSION.md` · `Track3-Submission-Checklist.md`
 - `Animal-ID-Build-Scope.md` · `Phase1-Architecture-Requirements.md` · `GPU-Window-Plan.md` · `ROADMAP.md`
 - `Competitive-Analysis-Seek.md`
-- `db/` (schema, 02_gamification, README) · `inference/` (main.py mock, gpu_server.py, agent.py, Dockerfiles)
-- `scripts/` (species pull + enrich + CSV) · `gpu/vision_validate.py`
+- `db/` · `inference/` (main.py = live server: Fireworks `/identify` + `/entry`; gpu_server.py = BioCLIP;
+  agent.py; vision_fireworks.py) · `scripts/` · `gpu/vision_validate.py`
 - `Lovable-Build-Prompt.md` + `lovable-prompts.md` · `assets/critto-cover.svg`

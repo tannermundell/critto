@@ -1,22 +1,19 @@
 # Critto — next session
 
-Big milestone hit: the real BioCLIP `/identify` runs on the AMD GPU (Lion 99.95%). Live hosting is
-NOT required (AMD support confirmed) — so the VM is off the critical path. Focus shifts to Fireworks
-and the submission assets.
+The build is essentially done. The whole live app runs on AMD-hosted Fireworks (identify + entry),
+and BioCLIP is validated on the AMD Instinct GPU. What's left is submission assets.
 
-## Tomorrow, in order
-1. **Wire Fireworks** → real `/entry`.
-   - Get your Fireworks API key (fw_...) + pick a model from their catalog.
-   - On Render → service → Environment, add:
-     `LLM_BASE_URL=https://api.fireworks.ai/inference/v1`
-     `LLM_MODEL=accounts/fireworks/models/<model>`
-     `LLM_API_KEY=<fireworks key>`
-   - Render redeploys; test `/entry` → should return `agent-llm` with real fields.
-2. **README: add an "AMD compute" section** (pre-screen reads the repo) — ROCm BioCLIP + Fireworks.
-3. **Demo recording setup** — run `gpu_server.py` on your laptop + ngrok/cloudflared tunnel, point
-   Lovable at it, so the app shows real IDs on camera. Also capture the notebook GPU run for the video.
-4. **Start the slide deck (PDF)** — state AMD usage (pre-screened).
+## Remaining, in order
+1. **Test the live app** end to end in Lovable (upload real photos across birds/mammals/reptiles) and
+   note any rough edges. Warm Render first (`/health`) to avoid the cold-start delay.
+2. **README "AMD compute" section** — state it plainly for the auto pre-screen:
+   "Identification and field-guide generation run live on AMD hardware via Fireworks AI (Minimax M3);
+   the BioCLIP classifier is validated on AMD Instinct GPUs via ROCm."
+3. **Slide deck (PDF)** — the pitch + AMD usage (pre-screened). Track 3 judging: creativity, originality,
+   completeness, use of AMD platforms, product/market potential.
+4. **Demo video** — app end-to-end + a few seconds of BioCLIP running on the AMD GPU (the 99.95% run).
+   For live-ID shots you can just use the deployed app (it's real now).
+5. Optional polish: cache the 150 entries in Supabase; reptile prompt tuning; more badge sets; multilingual names.
 
 ## Housekeeping
-- **Push tonight's/local changes**: `git add . && git commit -m "docs + status" && git push`.
-- Chase the $50 Fireworks hackathon credits in Discord if they haven't landed (works on the $6 trial meanwhile).
+- Push tonight's code + docs: `git add . && git commit -m "Fireworks vision + docs" && git push`.

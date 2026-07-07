@@ -11,12 +11,15 @@ _From the official Participant Guide (ACT II), updated after AMD support guidanc
 | Live demo / hosted URL | Optional | ⚪ not required — see note |
 | Docker image | Not required for Track 3 | (we have CPU + ROCm Dockerfiles anyway) |
 
-## AMD support ruling — no live hosting needed
-AMD support confirmed our project **does not need to be hosted live**; a recorded demo is acceptable.
-So the persistent Developer Cloud VM is **off the critical path**. We evidence AMD-compute usage by:
-- the vision model running on the **AMD Instinct GPU (ROCm)** — validated, Lion 99.95% (shown in the video),
-- the LLM on **Fireworks AI** (AMD-hosted), which is also in the live Render pipeline once wired,
-- **repo + slide deck** stating it explicitly (these are what the automated pre-screen reads — the video is not).
+## AMD compute — solved on two fronts
+- **Live app runs on AMD (Fireworks).** Both `/identify` (vision) and `/entry` (LLM) run on Minimax M3
+  via Fireworks AI (AMD-hosted), live on Render. So AMD compute is in the live pipeline AND the app is
+  effectively hosted — the Lovable app + Render URL make a working live demo.
+- **BioCLIP on the AMD Instinct GPU** (ROCm) — validated (Lion 99.95%); the high-accuracy classifier,
+  shown in the demo video as the GPU-compute evidence.
+- No persistent Developer Cloud VM needed (support confirmed live hosting isn't required; and we now have
+  a live AMD path anyway).
+- **Repo + slide deck** must state this explicitly — that's what the automated pre-screen reads.
 
 ## THE rule that still matters
 > "AMD compute usage is a requirement: projects that do not demonstrate it will be disqualified."
