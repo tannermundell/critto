@@ -29,6 +29,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
 from agent import build_entry
+from vision_fireworks import identify as fw_identify
 
 
 # --------------------------------------------------------------------------
@@ -157,8 +158,27 @@ def health():
 
 @app.post("/identify", response_model=IdentifyResponse, response_model_by_alias=True)
 def identify(req: IdentifyRequest):
-    """Mock: return 3 random species (optionally biased to a class) with
-    plausible, descending confidence scores."""
+    """Real: a Fireworks vision model (AMD-hosted) picks the top-3 species from
+    our list. Falls back to a random mock if there's no key / no image / the call
+    fails, so the endpoint always responds."""
+    if req.image_url:
+        cands = fw_identify(req.image_url, SPECIES)
+        if cands:
+            return IdentifyResponse(
+                candidates=[
+                    Candidate(
+                        common_name=c["common_name"],
+                        scientific_name=c["scientific_name"],
+                        class_=c["class"],
+                        confidence=c["confidence"],
+                        photo_url=c["photo_url"],
+                    )
+                    for c in cands
+                ],
+                model_version="minimax-vision",
+            )
+
+    # Fallback: random mock
     pool = [s for s in SPECIES if not req.class_ or s.get("class") == req.class_] or SPECIES
     picks = random.sample(pool, k=min(3, len(pool)))
     confs = _softmax_confidences()
@@ -172,7 +192,7 @@ def identify(req: IdentifyRequest):
         )
         for i, p in enumerate(picks)
     ]
-    return IdentifyResponse(candidates=candidates)
+    return IdentifyResponse(candidates=candidates, model_version="mock-1")
 
 
 @app.post("/entry", response_model=EntryResponse, response_model_by_alias=True)
