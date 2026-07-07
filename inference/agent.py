@@ -75,40 +75,63 @@ def retrieve_wikipedia(common: str, scientific: str) -> Optional[dict]:
 # --------------------------------------------------------------------------
 # LLM synthesis (OpenAI-compatible; also works with Fireworks)
 # --------------------------------------------------------------------------
+def _extract_json(text: str) -> Optional[dict]:
+    """Parse JSON, falling back to the outermost {...} if the model added prose."""
+    try:
+        return json.loads(text)
+    except Exception:
+        pass
+    i, j = text.find("{"), text.rfind("}")
+    if i != -1 and j > i:
+        try:
+            return json.loads(text[i:j + 1])
+        except Exception:
+            return None
+    return None
+
+
+def _chat(payload: dict) -> str:
+    r = SESSION.post(
+        f"{LLM_BASE_URL}/chat/completions",
+        headers={"Authorization": f"Bearer {LLM_API_KEY}"},
+        json=payload, timeout=60,
+    )
+    r.raise_for_status()
+    return r.json()["choices"][0]["message"]["content"]
+
+
 def _llm_fields(common: str, scientific: str, klass: str, reference: str) -> Optional[dict]:
     if not LLM_API_KEY:
         return None
     system = (
         "You are a wildlife field-guide writer. Using ONLY the reference text, fill "
         "each field in 1-2 concise, factual sentences. If a fact is not in the text, "
-        "write 'Not documented'. Return a JSON object with exactly these keys: "
+        "write 'Not documented'. Return ONLY a JSON object with exactly these keys: "
         + ", ".join(FIELDS) + "."
     )
     user = (
         f"Species: {common} ({scientific}), class {klass}.\n\n"
         f"Reference text:\n{reference}"
     )
-    payload = {
+    base = {
         "model": LLM_MODEL,
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ],
-        "response_format": {"type": "json_object"},
         "temperature": 0.3,
     }
-    try:
-        r = SESSION.post(
-            f"{LLM_BASE_URL}/chat/completions",
-            headers={"Authorization": f"Bearer {LLM_API_KEY}"},
-            json=payload, timeout=60,
-        )
-        r.raise_for_status()
-        content = r.json()["choices"][0]["message"]["content"]
-        data = json.loads(content)
-        return {k: str(data.get(k, "")).strip() or "Not documented" for k in FIELDS}
-    except Exception:
-        return None
+    # Try strict JSON mode first, then without it (not every model supports
+    # response_format), parsing leniently either way.
+    for extra in ({"response_format": {"type": "json_object"}}, {}):
+        try:
+            content = _chat({**base, **extra})
+        except Exception:
+            continue
+        data = _extract_json(content)
+        if data:
+            return {k: str(data.get(k, "")).strip() or "Not documented" for k in FIELDS}
+    return None
 
 
 # --------------------------------------------------------------------------
