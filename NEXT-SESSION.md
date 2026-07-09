@@ -13,7 +13,11 @@ and BioCLIP is validated on the AMD Instinct GPU. What's left is submission asse
    completeness, use of AMD platforms, product/market potential.
 4. **Demo video** — app end-to-end + a few seconds of BioCLIP running on the AMD GPU (the 99.95% run).
    For live-ID shots you can just use the deployed app (it's real now).
-5. Optional polish: cache the 150 entries in Supabase; reptile prompt tuning; more badge sets; multilingual names.
+5. Optional polish: cache the 150 entries in Supabase; reptile prompt tuning; multilingual names.
+6. **Badges v2 (Tanner's idea):** tiered coins — bronze/silver/gold at count thresholds (e.g. Mammals
+   10 = bronze, 25 = silver, 50 = gold; same for Birds and Reptiles). Plus brainstorm more themed sets
+   (e.g. a "Baby Five"-style set, predators, antelope, etc.). Draft the set/threshold definitions, then
+   a Lovable prompt to render the tiers.
 
 ## Housekeeping
 - Push tonight's code + docs: `git add . && git commit -m "Fireworks vision + docs" && git push`.

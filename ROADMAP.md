@@ -29,6 +29,9 @@
     conservation message).
   - **Class masters** — Birder / Herper / Mammal Tracker for completing a share of each class.
   - Thematic sets (Antelope Collector, Predators, etc.).
+  - **Tiered coins** — bronze/silver/gold by count within a class (e.g. Mammals 10 = bronze, 25 = silver,
+    50 = gold; likewise Birds and Reptiles). Turns each class into a progression, not a single unlock.
+  - Brainstorm more sets next session (e.g. a "Baby Five"-style set).
   - *Not yet:* **Little Five** (only the leopard tortoise is in our list) and **location/biome sets**
     (need per-location data — pair with Phase 3).
 
