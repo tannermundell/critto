@@ -104,7 +104,7 @@ uvicorn gpu_server:app --host 0.0.0.0 --port 8000
 Or run `gpu/vision_validate.py` for a quick end-to-end validation. See `inference/README.md`.
 
 ### 4. Frontend
-The Lovable app connects to your Supabase project and points its API base URL at the inference API above.
+The Lovable frontend connects to the Supabase project and points its API base URL at the inference API above.
 
 ---
 
