@@ -8,7 +8,7 @@ in a collection game (rarity cards, coins) designed to get people outdoors and c
 
 Built for the **AMD Developer Hackathon: ACT II — Track 3 (Unicorn)**.
 
-- **Live app:** _<add your Lovable URL>_
+- **Live app:** https://critto.org
 - **Demo video:** _<add link>_
 
 ---
