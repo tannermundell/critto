@@ -46,6 +46,12 @@ Journal, wired to your own Supabase + the Render API. Built UI-first with no Lov
 ## 11. Home page copy
 > On the home page, change the text "Add it to your personal life list." to "Add it to your journal."
 
+## 12. Collection uses stock images (not user photos)
+> On the Collection screen, each species card should use the species' reference image from the `species.photo_url` field (the stock photo) — NOT the user's uploaded sighting photo. Collected species show that reference photo in full colour; not-yet-spotted species show it locked/greyed (or a silhouette) with the name and rarity. Keep the user's own uploaded photos in the Journal, not the Collection.
+
+## 13. Robustly hide "Not documented" fields
+> On the result card, hide any field-guide field whose value — after trimming whitespace and any trailing punctuation, and ignoring case — equals "not documented" (also hide empty values). Apply this to every field including the Fun Fact box and "Where to spot it." If all field-guide fields end up hidden, show just the About summary. Never render the literal text "Not documented" to the user.
+
 ## Not yet prompted (future)
 - Badge/coin rewards for completing sets (Big Five, Endangered Guardians, class masters).
 - Levels / points from sightings count + rarity.

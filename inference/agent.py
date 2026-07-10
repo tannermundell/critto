@@ -32,6 +32,14 @@ LLM_MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
 
 FIELDS = ["habitat", "diet", "size", "range", "where_to_spot", "fun_fact"]
 
+
+def _norm_field(v) -> str:
+    """Canonicalise 'not documented'-style values so the frontend can hide them."""
+    v = str(v or "").strip()
+    if not v or v.rstrip(" .").lower() in ("not documented", "unknown", "n/a", "none", "not applicable"):
+        return "Not documented"
+    return v
+
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": "Critto-agent/1.0 (hackathon)"})
 
@@ -134,7 +142,7 @@ def _llm_fields(common: str, scientific: str, klass: str, reference: str) -> Opt
             continue
         data = _extract_json(content)
         if data:
-            return {k: str(data.get(k, "")).strip() or "Not documented" for k in FIELDS}
+            return {k: _norm_field(data.get(k, "")) for k in FIELDS}
     return None
 
 
