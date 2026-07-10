@@ -5,6 +5,8 @@
 Critto is a South African wildlife identification app. Snap or upload a photo of a bird, mammal, or
 reptile and Critto identifies the species, then returns a rich, source-backed field-guide entry — wrapped
 in a collection game (rarity cards, coins) designed to get people outdoors and connect them with nature.
+Most apps stop at a name; Critto goes deeper — it's built to help people genuinely learn about the
+wildlife around them, and keep coming back to discover more.
 
 Built for the **AMD Developer Hackathon: ACT II — Track 3 (Unicorn)**.
 
