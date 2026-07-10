@@ -106,8 +106,12 @@ def _llm_fields(common: str, scientific: str, klass: str, reference: str) -> Opt
     system = (
         "You are a wildlife field-guide writer. Using ONLY the reference text, fill "
         "each field in 1-2 concise, factual sentences. If a fact is not in the text, "
-        "write 'Not documented'. Return ONLY a JSON object with exactly these keys: "
-        + ", ".join(FIELDS) + "."
+        "write 'Not documented'. Each field must contain DISTINCT information — never "
+        "repeat the same fact in more than one field. The user separately sees an 'About' "
+        "summary taken from the START of the reference text, so for 'fun_fact' give a "
+        "genuinely surprising, lesser-known detail that is NOT the species' most obvious or "
+        "defining feature and does NOT restate anything from the opening of the reference. "
+        "Return ONLY a JSON object with exactly these keys: " + ", ".join(FIELDS) + "."
     )
     user = (
         f"Species: {common} ({scientific}), class {klass}.\n\n"
