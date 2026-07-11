@@ -52,6 +52,9 @@ Journal, wired to your own Supabase + the Render API. Built UI-first with no Lov
 ## 13. Robustly hide "Not documented" fields
 > On the result card, hide any field-guide field whose value — after trimming whitespace and any trailing punctuation, and ignoring case — equals "not documented" (also hide empty values). Apply this to every field including the Fun Fact box and "Where to spot it." If all field-guide fields end up hidden, show just the About summary. Never render the literal text "Not documented" to the user.
 
+## 14. Explore "Area" (habitat) filter
+> Add an "Area" filter to the Explore page using the species' `habitats` field (a text array on the `species` table). Populate the filter options from this fixed set: Savanna/Bushveld, Grassland, Forest, Fynbos/Shrubland, Karoo/Semi-desert, Wetland/Rivers, Coastal/Marine, Mountains, Urban/Gardens. Selecting one shows species whose `habitats` array contains that tag. Also show the habitat tags as small labels on each species' detail/entry view.
+
 ## Not yet prompted (future)
 - Badge/coin rewards for completing sets (Big Five, Endangered Guardians, class masters).
 - Levels / points from sightings count + rarity.

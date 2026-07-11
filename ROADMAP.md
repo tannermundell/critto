@@ -35,6 +35,14 @@
   - *Not yet:* **Little Five** (only the leopard tortoise is in our list) and **location/biome sets**
     (need per-location data — pair with Phase 3).
 
+## Near-term (from the Explore page)
+- **Fix rarity badge on Explore** — read `species.rarity` (currently all show "Legendary").
+- **Habitat/area tags** — add a `habitats` column (controlled vocab: Savanna/Bushveld, Grassland, Forest,
+  Fynbos/Shrubland, Karoo/Semi-desert, Wetland/Rivers, Coastal/Marine, Mountains, Urban/Gardens); populate
+  all 150 via a one-time enrichment (LLM over the habitat text). Powers the Explore area filter + adds learnable info.
+- **Even out entry depth** — for species with a thin Wikipedia article (e.g. obscure skinks), fall back to the
+  genus/family Wikipedia article so the agent can fill general habitat/diet/size (grounded + cited).
+
 ## Future (Phase 2 / 3+)
 - **Sighting verification / anti-cheat.** Checking a photo was really taken in the field (EXIF, geotag,
   timestamp, image authenticity). Needs proper anti-abuse design — future.

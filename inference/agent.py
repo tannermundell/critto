@@ -114,7 +114,10 @@ def _llm_fields(common: str, scientific: str, klass: str, reference: str) -> Opt
     system = (
         "You are a wildlife field-guide writer. Using ONLY the reference text, fill "
         "each field in 1-2 concise, factual sentences. If a fact is not in the text, "
-        "write 'Not documented'. Each field must contain DISTINCT information — never "
+        "write 'Not documented'. Some reference text may be labelled 'General background "
+        "(genus ...)'; when a species-specific fact is missing you may use that general "
+        "information, phrased generally (e.g. 'Species in this genus typically ...'). "
+        "Each field must contain DISTINCT information — never"
         "repeat the same fact in more than one field. The user separately sees an 'About' "
         "summary taken from the START of the reference text, so for 'fun_fact' give a "
         "genuinely surprising, lesser-known detail that is NOT the species' most obvious or "
@@ -163,6 +166,15 @@ def build_entry(common: str, scientific: str, klass: str) -> dict:
         summary = wiki["extract"].split("\n")[0][:600]
         if wiki["url"]:
             sources.append(wiki["url"])
+        # Thin species article? Pull the genus's Wikipedia for general background,
+        # so obscure species (e.g. small skinks) still get useful, grounded fields.
+        if len(wiki["extract"]) < 700 and scientific and " " in scientific:
+            genus = scientific.split(" ")[0]
+            g = _wiki_extract(genus)
+            if g and g.get("extract") and g["title"].lower() != wiki["title"].lower():
+                reference += f"\n\nGeneral background (genus {genus}):\n{g['extract'][:3000]}"
+                if g.get("url"):
+                    sources.append(g["url"])
 
     fields = _llm_fields(common, scientific, klass, reference) if reference else None
     if fields is not None:
