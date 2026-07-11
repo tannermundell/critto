@@ -22,7 +22,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 GPU = "CPU"
 if DEVICE == "cuda":
     _p = torch.cuda.get_device_properties(0)
-    GPU = (torch.cuda.get_device_name(0) or getattr(_p, "name", "") or "").strip() or f"AMD GPU ({getattr(_p, 'gcnArchName', '')})"
+    GPU = (torch.cuda.get_device_name(0) or getattr(_p, "name", "") or "").strip() or \
+          f"AMD GPU ({getattr(_p, 'gcnArchName', '')}, {round(_p.total_memory / 1024**3)} GB)"
 print(f"Running on: {GPU}  |  ROCm {getattr(torch.version, 'hip', None)}  |  PyTorch {torch.__version__}")
 
 CSV = "https://cdn.jsdelivr.net/gh/tannermundell/critto@main/scripts/sa_species_list.csv"

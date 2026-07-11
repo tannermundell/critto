@@ -1,0 +1,34 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe8a8"/><stop offset="55%" stop-color="#E0A32E"/><stop offset="100%" stop-color="#E0A32E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0B2E2B"/>
+  <circle cx="1190" cy="70" r="170" fill="url(#sun)"/>
+  <text x="60" y="80" fill="#F6C451" font-size="20" font-weight="700" letter-spacing="3">HOW CRITTO USES AI</text>
+  <text x="60" y="134" fill="#FDF7EA" font-size="46" font-weight="800">Two AI models &#8212; both on AMD</text>
+
+  <rect x="60" y="200" width="560" height="330" rx="16" fill="#175049"/>
+  <text x="92" y="256" fill="#F6C451" font-size="24" font-weight="800">1 &#183; Identify  (vision)</text>
+  <text x="92" y="304" fill="#FDF7EA" font-size="19">
+    <tspan x="92" dy="0">A BioCLIP vision model names the</tspan>
+    <tspan x="92" dy="30">species from a photo.</tspan>
+    <tspan x="92" dy="42">Validated on an AMD GPU (gfx1100)</tspan>
+    <tspan x="92" dy="30">via ROCm 7.2 &#8212; 99.95% on our test.</tspan>
+    <tspan x="92" dy="42">Live IDs run on Fireworks AI (AMD).</tspan>
+  </text>
+
+  <rect x="660" y="200" width="560" height="330" rx="16" fill="#175049"/>
+  <text x="692" y="256" fill="#F6C451" font-size="24" font-weight="800">2 &#183; Field guide  (language)</text>
+  <text x="692" y="304" fill="#FDF7EA" font-size="19">
+    <tspan x="692" dy="0">An AI agent pulls real sources</tspan>
+    <tspan x="692" dy="30">(Wikipedia + IUCN); a Fireworks AI</tspan>
+    <tspan x="692" dy="30">language model &#8212; via the AMD AI</tspan>
+    <tspan x="692" dy="30">Developer Program &#8212; writes a</tspan>
+    <tspan x="692" dy="30">grounded, cited field-guide entry.</tspan>
+  </text>
+
+  <text x="60" y="612" fill="#9FD6C6" font-size="22" font-weight="600">AMD on two fronts: our classifier on an AMD GPU (ROCm) + inference via Fireworks AI.</text>
+  <text x="60" y="652" fill="#9FD6C6" font-size="18">150 South African species &#183; birds, mammals, reptiles</text>
+</svg>
