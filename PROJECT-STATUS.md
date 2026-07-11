@@ -10,9 +10,9 @@ self-hosted GPU, no VM. The hosting question is fully resolved.
   list). Verified: Lion 98%. Falls back to the random mock only if the key/image is missing.
 - **`/entry`** — Fireworks **LLM** writes grounded field-guide fields (Wikipedia + IUCN + citations).
   Verified: real habitat/diet/range/etc., `model_version: agent-llm`.
-- **BioCLIP on the AMD Instinct GPU** (`inference/gpu_server.py`) — validated separately (Lion 99.95%,
+- **BioCLIP on the AMD GPU** (`inference/gpu_server.py`) — validated separately (Lion 99.95%,
   `device: cuda`, `hip: 7.2`). This is the high-accuracy classifier and the GPU-compute evidence for the
-  demo video. AMD is demonstrated on two fronts: Instinct GPU (shown) + Fireworks (live).
+  demo video. AMD is demonstrated on two fronts: AMD GPU (shown) + Fireworks (live).
 
 ## Live / done
 - **Supabase**: 150 species seeded + gamification (`rarity` blended with IUCN floor; `introduced`).
@@ -23,7 +23,7 @@ self-hosted GPU, no VM. The hosting question is fully resolved.
 - **GitHub** (public): `github.com/tannermundell/critto`.
 
 ## Still to do (build is essentially done)
-1. **Demo video** — Critto app end-to-end + a few seconds of BioCLIP on the AMD Instinct GPU.
+1. **Demo video** — Critto app end-to-end + a few seconds of BioCLIP on the AMD GPU.
 2. **Slide deck (PDF)** — state AMD usage (pre-screened).
 3. **README "AMD compute" section** (pre-screened) — Fireworks (live, both endpoints) + ROCm BioCLIP.
 4. Optional polish: pre-generate + cache the 150 entries; reptile prompt tuning; more badge sets;

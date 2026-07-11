@@ -15,7 +15,7 @@ _From the official Participant Guide (ACT II), updated after AMD support guidanc
 - **Live app runs on AMD (Fireworks).** Both `/identify` (vision) and `/entry` (LLM) run on Minimax M3
   via Fireworks AI (AMD-hosted), live on Render. So AMD compute is in the live pipeline AND the app is
   effectively hosted — the Lovable app + Render URL make a working live demo.
-- **BioCLIP on the AMD Instinct GPU** (ROCm) — validated (Lion 99.95%); the high-accuracy classifier,
+- **BioCLIP on the AMD GPU** (ROCm) — validated (Lion 99.95%); the high-accuracy classifier,
   shown in the demo video as the GPU-compute evidence.
 - No persistent Developer Cloud VM needed (support confirmed live hosting isn't required; and we now have
   a live AMD path anyway).
@@ -26,7 +26,7 @@ _From the official Participant Guide (ACT II), updated after AMD support guidanc
 > The auto pre-screen inspects the **GitHub repo, slide deck (PDF), and live URL** — NOT the video.
 
 So make AMD usage unmistakable in the repo README and the slide deck. Suggested wording:
-"vision inference on AMD Instinct GPUs via ROCm; LLM via Fireworks AI on AMD hardware."
+"vision inference on an AMD GPU via ROCm; LLM via Fireworks AI (AMD's inference partner)."
 
 ## Done
 - Original product app ✅ · public repo ✅ · real vision model validated on AMD GPU ✅ · frontend built ✅

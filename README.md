@@ -24,8 +24,8 @@ AMD is used on **two fronts**:
    (Fireworks runs on AMD Instinct alongside other hardware):
    - `/identify` — a Fireworks **vision** model identifies the animal, constrained to our 150-species catalog, and returns the top 3.
    - `/entry` — a Fireworks **LLM** writes the grounded field-guide fields (habitat, diet, range, etc.) from retrieved sources.
-2. **BioCLIP on AMD Instinct GPUs (ROCm).** Our specialised zero-shot classifier is validated **directly**
-   on AMD Instinct hardware via ROCm (`inference/gpu_server.py`, `gpu/vision_validate.py`) — e.g. 99.95% on
+2. **BioCLIP on an AMD GPU (ROCm).** Our specialised zero-shot classifier is validated **directly**
+   directly on an AMD GPU via ROCm (`inference/gpu_server.py`, `gpu/vision_validate.py`) — e.g. 99.95% on
    a test image, `device: cuda`, `hip: 7.2`. This is the high-accuracy vision path.
 
 ---
@@ -41,7 +41,7 @@ AMD is used on **two fronts**:
 │ collection   │──4──▶│ sightings        │      │ /entry → Fireworks LLM     │  (AMD)
 │ + coins      │      │                  │◀─────│   → grounded field guide   │
 └──────────────┘      └──────────────────┘      └────────────────────────────┘
-                                                  BioCLIP on AMD Instinct GPU (ROCm)
+                                                  BioCLIP on AMD GPU (ROCm)
                                                   = validated high-accuracy classifier
 ```
 
@@ -61,7 +61,7 @@ AMD is used on **two fronts**:
 | `inference/main.py` | Live API — Fireworks `/identify` (vision) + `/entry` (LLM) |
 | `inference/agent.py` | Field-guide agent — Wikipedia + IUCN retrieval + LLM synthesis |
 | `inference/vision_fireworks.py` | Fireworks vision-model identification |
-| `inference/gpu_server.py` | BioCLIP `/identify` on AMD Instinct GPU (ROCm) |
+| `inference/gpu_server.py` | BioCLIP `/identify` on AMD GPU (ROCm) |
 | `gpu/vision_validate.py` | BioCLIP validation script for the AMD notebook |
 | `db/` | Supabase schema, seeding, gamification SQL |
 | `scripts/` | Species data pull (`pull_sa_species.py`) + IUCN enrichment (`enrich_iucn.py`) |
@@ -111,7 +111,7 @@ The Lovable frontend connects to the Supabase project and points its API base UR
 ---
 
 ## Tech stack
-AMD Instinct GPU (ROCm) · Fireworks AI (Minimax M3) · BioCLIP / OpenCLIP · FastAPI · Supabase ·
+AMD GPU (ROCm) · Fireworks AI (Minimax M3) · BioCLIP / OpenCLIP · FastAPI · Supabase ·
 Lovable (React) · Render.
 
 ## Team
