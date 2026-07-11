@@ -21,6 +21,7 @@ conserve Fireworks credits).
 
 import json
 import os
+import time
 from typing import Optional
 
 import requests
@@ -41,7 +42,7 @@ def _norm_field(v) -> str:
     return v
 
 SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "Critto-agent/1.0 (hackathon)"})
+SESSION.headers.update({"User-Agent": "Critto/1.0 (https://critto.org; wildlife field-guide app)"})
 
 _CACHE: dict = {}
 
@@ -54,9 +55,17 @@ def _wiki_extract(title: str) -> Optional[dict]:
         "action": "query", "prop": "extracts", "explaintext": 1,
         "redirects": 1, "format": "json", "titles": title,
     }
-    try:
-        data = SESSION.get(WIKI_API, params=params, timeout=20).json()
-    except Exception:
+    data = None
+    for attempt in range(3):
+        try:
+            r = SESSION.get(WIKI_API, params=params, timeout=20)
+            if r.status_code == 200:
+                data = r.json()
+                break
+        except Exception:
+            pass
+        time.sleep(0.5 * (attempt + 1))
+    if not data:
         return None
     for _, page in data.get("query", {}).get("pages", {}).items():
         if "missing" in page:
@@ -166,15 +175,18 @@ def build_entry(common: str, scientific: str, klass: str) -> dict:
         summary = wiki["extract"].split("\n")[0][:600]
         if wiki["url"]:
             sources.append(wiki["url"])
-        # Thin species article? Pull the genus's Wikipedia for general background,
-        # so obscure species (e.g. small skinks) still get useful, grounded fields.
-        if len(wiki["extract"]) < 700 and scientific and " " in scientific:
-            genus = scientific.split(" ")[0]
-            g = _wiki_extract(genus)
-            if g and g.get("extract") and g["title"].lower() != wiki["title"].lower():
-                reference += f"\n\nGeneral background (genus {genus}):\n{g['extract'][:3000]}"
-                if g.get("url"):
-                    sources.append(g["url"])
+
+    # Genus background when the species article is thin OR missing entirely, so
+    # obscure species (e.g. small skinks) still get useful, grounded fields.
+    if (not wiki or len(reference) < 700) and scientific and " " in scientific:
+        genus = scientific.split(" ")[0]
+        g = _wiki_extract(genus)
+        if g and g.get("extract") and (not wiki or g["title"].lower() != wiki["title"].lower()):
+            reference += f"\n\nGeneral background (genus {genus}):\n{g['extract'][:3000]}"
+            if not summary:
+                summary = g["extract"].split("\n")[0][:600]
+            if g.get("url"):
+                sources.append(g["url"])
 
     fields = _llm_fields(common, scientific, klass, reference) if reference else None
     if fields is not None:
@@ -183,7 +195,7 @@ def build_entry(common: str, scientific: str, klass: str) -> dict:
         # Grounded fallback: keep the real Wikipedia summary; be honest about the
         # split fields until an LLM is connected.
         note = "Connect the language model for a detailed write-up." if reference \
-            else "No reference text found for this species."
+            else "Details not available for this species yet."
         fields = {f: ("Not documented" if reference else note) for f in FIELDS}
         model_version = "agent-fallback"
 
@@ -193,5 +205,6 @@ def build_entry(common: str, scientific: str, klass: str) -> dict:
         "sources": sources or ["none"],
         "model_version": model_version,
     }
-    _CACHE[key] = result
+    if reference:  # only cache real lookups; let transient failures retry next time
+        _CACHE[key] = result
     return result
